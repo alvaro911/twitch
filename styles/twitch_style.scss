@@ -1,0 +1,111 @@
+body, html{
+	margin:0;
+	padding:0;
+	background-color:black;
+}
+
+img{
+	width:100%;
+	height:auto;
+}
+
+*{
+	box-sizing:border-box
+}
+
+a{
+	text-decoration:none;
+}
+
+.wrapper{
+	width:100%;
+	max-width:1024px;
+	margin:0 auto;
+}
+
+nav{
+	width:100%;
+	height:auto;
+	text-align:center;
+	background-color:#85E5A9;
+	
+	div{
+		width:33%;
+		font-family:sans-serif;
+		display:inline-block;
+		color:white;
+		height:40px;
+		background-color:#85E5A9;
+		padding:.7em;
+		text-transform:uppercase;
+	}
+}
+
+.search{
+	width:100%;
+	padding:15px;
+	height:auto;
+}
+
+hr{
+	width:100%;
+	border:0;
+	margin:0;
+	height:10px;
+	background-color:#85E5A9;
+}
+
+.user{
+	width:100%;
+	height:auto;
+	padding:18px;
+	background-color:#3B4051;
+	overflow:auto;
+	font-family: sans-serif;
+	color:white;
+
+	.display{
+		display: inline-block;
+		vertical-align:top;
+	}
+
+	.userImg{
+		width:12%;
+		height:auto;
+		border-radius:50%;
+		border:0;
+		overflow:hidden;
+	}
+
+	.userInfo{
+		width:84%;
+		padding-left:35px;
+	}
+
+	.userStatus{
+		width:3%;
+		text-align:center;
+
+		.red{
+			height:10px;
+			width:10px;
+			background-color:red;
+			border-radius:50%;
+			display:inline-block;
+			margin-top:191%;
+		}
+	}
+
+}
+
+footer{
+	width:100%;
+	height:auto;
+	padding:5px 15px;
+	background-color:#2C2C27;
+	color:#8E8F89;
+	font-size:.8em;
+	font-family:sans-serif;
+	position:absolute;
+	bottom:0
+}
