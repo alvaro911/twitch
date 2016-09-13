@@ -1,10 +1,10 @@
 <!DOCTYPE html>
-<html>
+<html ng-app="TwitchApp">
 <head>
 	<title>Tiwtch TV app</title>
 	<link rel="stylesheet" type="text/css" href="css/twitch_style.css">
 </head>
-<body>
+<body ng-controller="TwitchCtrl as twitch">
 	<div class="wrapper">
 		<nav>
 			<div>All</div>
@@ -13,11 +13,11 @@
 		</nav>
 		<input class="search" type="text" name="search" placeholder="e.g name">
 		<hr>
-		<div class="user">
-			<div class="userImg display"><img src="http://www.caretofun.net/wp-content/uploads/2015/07/beautiful-girl-profile-caretofun.net-5.jpg"></div>
+		<div ng-repeat="user in twitch.users" class="user">
+			<div class="userImg display"><img ng-src="{{user.logo}}"></div>
 			<div class="userInfo display">
-				<h2>User Name</h2>
-				<p>a line about what we are doing</p>
+				<h2>{{user.display_name}}</h2>
+				<p>{{user.status}}</p>
 			</div>
 			<div class="userStatus display"><div class="red"></div></div>
 		</div>
@@ -25,8 +25,8 @@
 
 	<footer>Check project on <a href="http://www.github.com/alvaro911" target="_blank">Github</a></footer>
 
-	<script type="text/javascript" src="angular/angular.min.js"></script>
-	<script type="text/javascript" src="angular-animate/angular-animate.min.js"></script>
+	<script type="text/javascript" src="node_modules/angular/angular.min.js"></script>
+	<script type="text/javascript" src="node_modules/angular-animate/angular-animate.min.js"></script>
 	<script type="text/javascript" src="dist/twitch.js"></script>
 </body>
 </html>
