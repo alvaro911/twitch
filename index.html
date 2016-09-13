@@ -13,11 +13,11 @@
 		</nav>
 		<input class="search" type="text" name="search" placeholder="e.g name">
 		<hr>
-		<div ng-repeat="user in twitch.users" class="user">
-			<div class="userImg display"><img ng-src="{{user.logo}}"></div>
+		<div ng-repeat="user in twitch.users" ng-if="user.stream" class="user">
+			<div class="userImg display"><img ng-src="{{user.channel.logo}}"></div>
 			<div class="userInfo display">
-				<h2>{{user.display_name}}</h2>
-				<p>{{user.status}}</p>
+				<h2>{{user.channel.display_name}}</h2>
+				<p>{{user.channel.status}}</p>
 			</div>
 			<div class="userStatus display"><div class="red"></div></div>
 		</div>

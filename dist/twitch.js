@@ -1,34 +1,44 @@
 (function(){
 	angular
 	.module('TwitchApp', ['ngAnimate'])
-	.factory('twitchService', ['$http', twitchService])
+	.factory('twitchService', ['$http', '$q', twitchService])
 	.controller('TwitchCtrl', ['twitchService', '$log' ,twitchFn]);
 
 	function twitchFn(channel, $log){
 		var self = this;
-		var channels = ['adobe', 'freecodecamp', 'legendsofgaminguk'];
+		var channels = ['adobe', 'freecodecamp', 'legendsofgaminguk', 'AngryJoeShow'];
 		self.users = [];
 		var getChannels = function(response){
-			self.users.push(response.data);
-			$log.info(response);
+			var user = {
+				channel:response[0].data,
+				stream:response[1].data.stream
+			};
+			self.users.push(user);
+			$log.info(user);
 		};
 		var requests = channel(channels);
-		requests.forEach(function(req){
-			req.then(getChannels);
+		requests.then(function(req){
+			req.forEach(getChannels);
 		});
 	}
 
-	function twitchService($http){
+	function twitchService($http, $q){
 		var channel = function(chan){
 			var requests = [];
 			for(var i=0; i<chan.length; i++){
-				var req = $http({
+				var channels = $http({
 					method:'GET',
 					url:'https://api.twitch.tv/kraken/channels/' + chan[i]
 				});
+
+				var streams = $http({
+					method: 'GET',
+					url:'https://api.twitch.tv/kraken/streams/' + chan[i]
+				});
+			var req = $q.all([channels, streams]);
 				requests.push(req);
 			}
-			return requests;
+			return $q.all(requests);
 		};
 		return channel;
 	}
