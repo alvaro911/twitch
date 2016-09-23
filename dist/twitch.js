@@ -28,12 +28,18 @@
 			for(var i=0; i<chan.length; i++){
 				var channels = $http({
 					method:'GET',
-					url:'https://api.twitch.tv/kraken/channels/' + chan[i]
+					url:'https://api.twitch.tv/kraken/channels/' + chan[i],
+					headers:{
+						'Client-ID':'686epy0ixpmvawi7c8bljf3zj9t6ix0'
+					}
 				});
 
 				var streams = $http({
 					method: 'GET',
-					url:'https://api.twitch.tv/kraken/streams/' + chan[i]
+					url:'https://api.twitch.tv/kraken/streams/' + chan[i],
+					headers:{
+						'Client-ID':'686epy0ixpmvawi7c8bljf3zj9t6ix0'
+					}
 				});
 			var req = $q.all([channels, streams]);
 				requests.push(req);
