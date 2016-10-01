@@ -7,19 +7,23 @@
 <body ng-controller="TwitchCtrl as twitch">
 	<div class="wrapper">
 		<nav>
-			<div>All</div>
-			<div>Online</div>
-			<div>Offline</div>
+			<a class="tab" ng-click="twitch.select(1)">All</a>
+			<a class="tab" ng-click="twitch.select(2)">Online</a>
+			<a class="tab" ng-click="twitch.select(3)">Offline</a>
 		</nav>
 		<input class="search" type="text" name="search" placeholder="e.g name">
 		<hr>
-		<div ng-repeat="user in twitch.users" ng-if="user.stream" class="user">
+		<div ng-repeat="user in twitch.users | filter: twitch.users.filtText"  class="user">
 			<div class="userImg display"><img ng-src="{{user.channel.logo}}"></div>
 			<div class="userInfo display">
 				<h2>{{user.channel.display_name}}</h2>
-				<p>{{user.channel.status}}</p>
+				<p ng-show="user.stream">{{user.channel.status}}</p>
+				<p ng-hide="user.stream">Offline</p>
 			</div>
-			<div class="userStatus display"><div class="red"></div></div>
+			<div class="userStatus display">
+
+				<div ng-class="{green:user.stream, red:!user.stream}"></div>
+			</div>
 		</div>
 	</div>
 

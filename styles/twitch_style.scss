@@ -29,7 +29,7 @@ nav{
 	text-align:center;
 	background-color:#85E5A9;
 	
-	div{
+	.tab{
 		width:33%;
 		font-family:sans-serif;
 		display:inline-block;
@@ -38,6 +38,7 @@ nav{
 		background-color:#85E5A9;
 		padding:.7em;
 		text-transform:uppercase;
+		cursor:pointer;
 	}
 }
 
@@ -94,6 +95,14 @@ hr{
 			display:inline-block;
 			margin-top:191%;
 		}
+		.green{
+			height:10px;
+			width:10px;
+			background-color:green;
+			border-radius:50%;
+			display:inline-block;
+			margin-top:191%;
+		}
 	}
 
 }
@@ -106,6 +115,5 @@ footer{
 	color:#8E8F89;
 	font-size:.8em;
 	font-family:sans-serif;
-	position:absolute;
 	bottom:0
 }

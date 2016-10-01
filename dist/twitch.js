@@ -6,13 +6,19 @@
 
 	function twitchFn(channel, $log){
 		var self = this;
-		var channels = ['adobe', 'freecodecamp', 'legendsofgaminguk', 'AngryJoeShow'];
+		var channels = ['adobe', 'freecodecamp', 'legendsofgaminguk', 'AngryJoeShow', 'pointblank'];
 		self.users = [];
 		var getChannels = function(response){
 			var user = {
 				channel:response[0].data,
 				stream:response[1].data.stream
 			};
+			if(user.stream === null){
+				user.channel.channelStatus = 'CRAZYS**T';
+				// console.log(user.channel);
+			}else{
+				user.channel.channelStatus = 'online';
+			}
 			self.users.push(user);
 			$log.info(user);
 		};
@@ -20,6 +26,21 @@
 		requests.then(function(req){
 			req.forEach(getChannels);
 		});
+
+		self.tab = 1;
+		self.filtText = '';
+		self.select = function (setTab){
+			self.tab = setTab;
+			if(setTab === 2){
+				self.users.filtText = 'online';
+			}
+			else if(setTab === 3){
+				self.users.filtText = 'CRAZYS**T';
+			} 
+			else{
+				self.users.filtText = '';
+			}
+		};
 	}
 
 	function twitchService($http, $q){

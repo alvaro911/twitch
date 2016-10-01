@@ -23,7 +23,7 @@ nav {
   height: auto;
   text-align: center;
   background-color: #85E5A9; }
-  nav div {
+  nav .tab {
     width: 33%;
     font-family: sans-serif;
     display: inline-block;
@@ -31,7 +31,8 @@ nav {
     height: 40px;
     background-color: #85E5A9;
     padding: .7em;
-    text-transform: uppercase; }
+    text-transform: uppercase;
+    cursor: pointer; }
 
 .search {
   width: 100%;
@@ -75,6 +76,13 @@ hr {
       border-radius: 50%;
       display: inline-block;
       margin-top: 191%; }
+    .user .userStatus .green {
+      height: 10px;
+      width: 10px;
+      background-color: green;
+      border-radius: 50%;
+      display: inline-block;
+      margin-top: 191%; }
 
 footer {
   width: 100%;
@@ -84,5 +92,4 @@ footer {
   color: #8E8F89;
   font-size: .8em;
   font-family: sans-serif;
-  position: absolute;
   bottom: 0; }
