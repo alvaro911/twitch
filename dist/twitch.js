@@ -14,10 +14,9 @@
 				stream:response[1].data.stream
 			};
 			if(user.stream === null){
-				user.channel.channelStatus = 'CRAZYS**T';
-				// console.log(user.channel);
+				user.channel.channelStatus = 'not streaming';
 			}else{
-				user.channel.channelStatus = 'online';
+				user.channel.channelStatus = 'is streaming';
 			}
 			self.users.push(user);
 			$log.info(user);
@@ -28,14 +27,13 @@
 		});
 
 		self.tab = 1;
-		self.filtText = '';
 		self.select = function (setTab){
 			self.tab = setTab;
 			if(setTab === 2){
-				self.users.filtText = 'online';
+				self.users.filtText = 'is streaming';
 			}
 			else if(setTab === 3){
-				self.users.filtText = 'CRAZYS**T';
+				self.users.filtText = 'not streaming';
 			} 
 			else{
 				self.users.filtText = '';
