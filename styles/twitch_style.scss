@@ -1,7 +1,35 @@
+//these are the colors used
+$twitch-purple:#502B93;
+$background: #191028;
+
+@mixin light-status{
+	height:10px;
+	width:10px;
+	border-radius:50%;
+	display:inline-block;
+	margin-top:191%;
+}
+
+@mixin lighten-tab{
+	-webkit-transition: all .5s ease-out;
+	-moz-transition: all .5s ease-out;
+	-ms-transition: all .5s ease-out;
+	-o-transition: all .5s ease-out;
+	transition: all .5s ease-out; 
+}
+
+@mixin animate{
+	-webkit-transition: 400ms cubic-bezier(0.250, 0.250, 0.750, 0.750) all;
+	-moz-transition: 400ms cubic-bezier(0.250, 0.250, 0.750, 0.750) all;
+	-ms-transition: 400ms cubic-bezier(0.250, 0.250, 0.750, 0.750) all;
+	-o-transition: 400ms cubic-bezier(0.250, 0.250, 0.750, 0.750) all;
+	transition: 400ms cubic-bezier(0.250, 0.250, 0.750, 0.750) all;
+}
+
 body, html{
 	margin:0;
 	padding:0;
-	background-color:black;
+	background-color:lighten($background, 10%); 
 }
 
 img{
@@ -22,12 +50,23 @@ a{
 	max-width:1024px;
 	margin:0 auto;
 }
+	
+.header{
+	width:100%;
+	height: 7em;
+	background-color:darken($twitch-purple, 30%);
+
+	img{
+		width:20%;
+		margin: 1em 40%;
+	}
+}
 
 nav{
 	width:100%;
 	height:auto;
 	text-align:center;
-	background-color:#85E5A9;
+	background-color:$twitch-purple;
 	
 	.tab{
 		width:33%;
@@ -35,10 +74,15 @@ nav{
 		display:inline-block;
 		color:white;
 		height:40px;
-		background-color:#85E5A9;
+		background-color:$twitch-purple;
 		padding:.7em;
 		text-transform:uppercase;
 		cursor:pointer;
+		@include lighten-tab;
+		
+		&:hover{
+			background-color: lighten($twitch-purple, 20%);
+		}
 	}
 }
 
@@ -53,14 +97,14 @@ hr{
 	border:0;
 	margin:0;
 	height:10px;
-	background-color:#85E5A9;
+	background-color:$twitch-purple;
 }
 
 .user{
 	width:100%;
 	height:auto;
 	padding:18px;
-	background-color:#3B4051;
+	background-color:$background;
 	overflow:auto;
 	font-family: sans-serif;
 	color:white;
@@ -71,9 +115,9 @@ hr{
 	}
 
 	.userImg{
-		width:12%;
+		width:8%;
 		height:auto;
-		border-radius:50%;
+		border-radius:20%;
 		border:0;
 		overflow:hidden;
 	}
@@ -81,6 +125,15 @@ hr{
 	.userInfo{
 		width:84%;
 		padding-left:35px;
+
+		a{
+			color:white;
+			@include lighten-tab;
+			
+			&:hover{
+				color:lighten($twitch-purple, 25%);
+			}
+		}
 	}
 
 	.userStatus{
@@ -88,23 +141,28 @@ hr{
 		text-align:center;
 
 		.red{
-			height:10px;
-			width:10px;
-			background-color:red;
-			border-radius:50%;
-			display:inline-block;
-			margin-top:191%;
+			@include light-status		
+			background-color:#EDEDED;
 		}
 		.green{
-			height:10px;
-			width:10px;
-			background-color:green;
-			border-radius:50%;
-			display:inline-block;
-			margin-top:191%;
+			@include light-status
+			background-color:#4dc539;
 		}
 	}
+}
 
+.animate-enter, .animate-leave{
+	@include animate;
+}
+
+.animate-leave.animate-leave-active,
+.animate-enter {
+	opacity: 0;
+}
+
+.animate-enter.animate-enter-active, 
+.animate-leave{
+	opacity: 1;
 }
 
 footer{
@@ -115,5 +173,6 @@ footer{
 	color:#8E8F89;
 	font-size:.8em;
 	font-family:sans-serif;
+	position:fixed;
 	bottom:0
 }

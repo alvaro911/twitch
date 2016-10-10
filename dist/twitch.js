@@ -6,7 +6,7 @@
 
 	function twitchFn(channel, $log){
 		var self = this;
-		var channels = ['adobe', 'freecodecamp', 'legendsofgaminguk', 'AngryJoeShow', 'pointblank'];
+		var channels = ['adobe', 'freecodecamp', 'Bobross', 'AngryJoeShow', 'mioree', 'moatdd', 'thegypsyknight'];
 		self.users = [];
 		var getChannels = function(response){
 			var user = {

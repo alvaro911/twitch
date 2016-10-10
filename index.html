@@ -1,22 +1,25 @@
 <!DOCTYPE html>
 <html ng-app="TwitchApp">
 <head>
-	<title>Tiwtch TV app</title>
+	<title>Twitch TV app</title>
 	<link rel="stylesheet" type="text/css" href="css/twitch_style.css">
 </head>
 <body ng-controller="TwitchCtrl as twitch">
 	<div class="wrapper">
+		<div class="header">
+			<img src="http://static1.squarespace.com/static/510d16d5e4b0e3b888b8ec28/t/546dae7ee4b01ffc563db48d/1416474238538/">
+		</div>
 		<nav>
 			<a class="tab" ng-click="twitch.select(1)">All</a>
 			<a class="tab" ng-click="twitch.select(2)">Online</a>
 			<a class="tab" ng-click="twitch.select(3)">Offline</a>
 		</nav>
-		<input class="search" type="text" name="search" placeholder="e.g name">
+		<input class="search" ng-model="twitch.search" type="text" name="search" placeholder="e.g name">
 		<hr>
-		<div ng-repeat="user in twitch.users | filter: twitch.users.filtText"  class="user">
+		<div ng-repeat="user in twitch.users | filter: twitch.users.filtText | filter: twitch.search" ng-animate="'animate'" class="user">
 			<div class="userImg display"><img ng-src="{{user.channel.logo}}"></div>
 			<div class="userInfo display">
-				<h2>{{user.channel.display_name}}</h2>
+				<a href="{{user.channel.url}}" target="_blank"><h2>{{user.channel.display_name}}</h2></a>
 				<p ng-show="user.stream">{{user.channel.status}}</p>
 				<p ng-hide="user.stream">Offline</p>
 			</div>
