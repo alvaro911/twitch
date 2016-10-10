@@ -174,5 +174,9 @@ footer{
 	font-size:.8em;
 	font-family:sans-serif;
 	position:fixed;
-	bottom:0
+	bottom:0;
+
+	a{
+		color: $twitch-purple;
+	}
 }

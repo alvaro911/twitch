@@ -133,3 +133,5 @@ footer {
   font-family: sans-serif;
   position: fixed;
   bottom: 0; }
+  footer a {
+    color: #502B93; }
